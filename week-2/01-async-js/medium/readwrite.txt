@@ -1,0 +1,5 @@
+##data before
+hello     world    my    name   is       raman
+
+##data after modification
+hello world my name is raman
