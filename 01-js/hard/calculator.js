@@ -16,6 +16,37 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+class Calculator {
+  constructor() {
+    this.result = 0;
+  }
+  add(n) {
+    this.result += n;
+  }
+  sub(n) {
+    this.result -= n;
+  }
+  div(n) {
+    this.result /= n;
+  }
+  mul(n) {
+    this.result *= n;
+  }
+  getResult() {
+    return this.result;
+  }
+  clear() {
+    this.result = 0;
+  }
+}
 
-module.exports = Calculator;
+let a = new Calculator();
+a.add(10);
+a.sub(2);
+a.clear();
+a.add(10);
+a.div(2);
+a.mul(3);
+
+console.log(a.getResult());
+// module.exports = Calculator;
