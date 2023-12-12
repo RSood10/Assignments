@@ -3,6 +3,7 @@
 */
 
 function wait(n) {
+<<<<<<< HEAD
   console.log("Inside function!!");
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -21,3 +22,8 @@ p.then(() => {
 
 console.log("p (outside then)", p);
 console.log("**After calling wait**");
+=======
+}
+
+module.exports = wait;
+>>>>>>> 0ad4e259c609d35b91caa1d6295f5e519e1ca181
