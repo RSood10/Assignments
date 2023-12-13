@@ -4,71 +4,55 @@
  * Return a promise.all which return the time in milliseconds it takes to complete the entire operation.
  */
 
-<<<<<<< HEAD
-function waitOneSecond() {
+function waitOneSecond(t) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      console.log("One Sec");
+      // console.log("One Sec");
       resolve("One Sec");
-    }, 1000);
+    }, t * 1000);
   });
 }
 
-function waitTwoSecond() {
+function waitTwoSecond(t) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      console.log("two Sec");
+      // console.log("two Sec");
       resolve("two Sec");
-    }, 2000);
+    }, t * 1000);
   });
 }
 
-function waitThreeSecond() {
+function waitThreeSecond(t) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      console.log("three Sec");
+      // console.log("three Sec");
       resolve("three Sec");
-    }, 3000);
+    }, t * 1000);
   });
-}
-
-function calculateTime() {
-  console.log("Promise all");
-  let d = new Date();
-  const startTime = d.getMilliseconds();
-
-  Promise.all([waitOneSecond(), waitTwoSecond(), waitThreeSecond()]).then(
-    (values) => {
-      console.log("All promise resolved💲💲");
-      let d = new Date();
-
-      const endTime = d.getMilliseconds();
-      const elapsedTime = endTime - startTime;
-
-      console.log("Time used in millisec : ", elapsedTime);
-      values.map((value) => {
-        console.log(value);
-      });
-    }
-  );
-}
-calculateTime();
-=======
-function wait1(t) {
-
-}
-
-function wait2(t) {
-
-}
-
-function wait3(t) {
-
 }
 
 function calculateTime(t1, t2, t3) {
+  console.log("Promise all");
+  const startTime = Date.now();
+  return new Promise((resolve) => {
+    Promise.all([
+      waitOneSecond(t1),
+      waitTwoSecond(t2),
+      waitThreeSecond(t3),
+    ]).then((values) => {
+      // console.log("All promise resolved💲💲");
 
+      const endTime = Date.now();
+      console.log(endTime, " ", startTime);
+      const elapsedTime = endTime - startTime;
+      // console.log(elapsedTime);
+      resolve(elapsedTime);
+      // console.log("Time used in millisec : ", elapsedTime);
+      // values.map((value) => {
+      //   console.log(value);
+      // });
+    });
+  });
 }
-
+// calculateTime(10, 1, 1);
 module.exports = calculateTime;
->>>>>>> 0ad4e259c609d35b91caa1d6295f5e519e1ca181

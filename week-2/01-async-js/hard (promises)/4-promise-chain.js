@@ -5,30 +5,40 @@
  * Compare it with the results from 3-promise-all.js
  */
 
-<<<<<<< HEAD
-function waitOneSecond() {}
-=======
 function wait1(t) {
->>>>>>> 0ad4e259c609d35b91caa1d6295f5e519e1ca181
+  return new Promise((resolve) => {
+    setTimeout(resolve, t * 1000);
+  });
+}
 
-function waitTwoSecond() {}
-
-<<<<<<< HEAD
-function waitThreeSecond() {}
-
-function calculateTime() {}
-=======
 function wait2(t) {
-
+  return new Promise((resolve) => {
+    setTimeout(resolve, t * 1000);
+  });
 }
 
 function wait3(t) {
-
+  return new Promise((resolve) => {
+    setTimeout(resolve, t * 1000);
+  });
 }
 
 function calculateTime(t1, t2, t3) {
-
+  const startTime = Date.now();
+  return new Promise((resolve) => {
+    wait1(t1)
+      .then(() => {
+        return wait2(t2);
+      })
+      .then(() => {
+        return wait3(t3);
+      })
+      .then(() => {
+        const endTime = Date.now();
+        const elapsedTime = endTime - startTime;
+        resolve(elapsedTime);
+      });
+  });
 }
 
 module.exports = calculateTime;
->>>>>>> 0ad4e259c609d35b91caa1d6295f5e519e1ca181
