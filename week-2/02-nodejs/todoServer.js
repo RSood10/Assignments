@@ -39,11 +39,62 @@
 
   Testing the server - run `npm run test-todoServer` command in terminal
  */
-  const express = require('express');
-  const bodyParser = require('body-parser');
-  
-  const app = express();
-  
-  app.use(bodyParser.json());
-  
-  module.exports = app;
+const express = require("express");
+const bodyParser = require("body-parser");
+
+const app = express();
+
+app.use(bodyParser.json());
+let i = 1;
+const todos = [
+  {
+    id: i,
+    title: "Buy groceries",
+    completed: false,
+    description: "I should buy groceries",
+  },
+  // {
+  //   id: i,
+  //   title: "Go Cycling",
+  //   completed: false,
+  //   description: "I should go daily.",
+  // },
+];
+app.get("/todos", (req, res) => {
+  res.send(todos);
+});
+
+app.get("/todos/:id", (req, res) => {
+  const id = req.params.id;
+  res.send(todos[id - 1]);
+});
+
+app.post("/todos", (req, res) => {
+  i++;
+  const todoTitle = req.body.title;
+  const des = req.body.des;
+  const add = {
+    id: i,
+    title: todoTitle,
+    completed: false,
+    description: des,
+  };
+  todos.push(add);
+  res.json({ msg: "post done" });
+});
+
+app.put("/todos/:id", (req, res) => {
+  const ide = req.params.id;
+  // const state = req.body.state;
+  if (ide > todos.length) res.status(404).send("File not found");
+  else todos[ide - 1].completed = true;
+
+  res.json({ msg: "put done" });
+});
+
+app.listen(3000);
+module.exports = app;
+// {
+//   "title" : "Go for walk",
+//   "des" : "it keeps us healthy"
+// }

@@ -12,10 +12,44 @@
     - For any other route not defined in the server return 404
     Testing the server - run `npm run test-fileServer` command in terminal
  */
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
+const express = require("express");
 const app = express();
+const directory = "./files";
 
+// use readdir method to read the files of the direcoty
+app.get("/files", (req, res) => {
+  fs.readdir(directory, (err, files) => {
+    // let filesArray = [];
 
+    // files.forEach((file) => {
+    //   // get the details of the file
+    //   let fileDetails = fs.lstatSync(path.resolve(directory, file));
+    //   // check if the file is directory
+    //   if (!fileDetails.isDirectory()) {
+    //     // console.log("File: " + file);
+    //     filesArray.push(file);
+    //   }
+    // });
+    if (err) {
+      return res.status(500).json({ error: "Failed to retrieve files" });
+    } else res.json(files);
+  });
+});
+app.get("/files/:filename", (req, res) => {
+  // const fileName = req.params.filename;
+  const filepath = path.join(__dirname, "./files/", req.params.filename);
+  fs.readFile(filepath, "utf-8", (err, data) => {
+    if (err) {
+      return res.status(404).send("File not found");
+    } else res.send(data);
+  });
+});
+
+app.all("*", (req, res) => {
+  res.status(404).send("Route not found");
+});
+// app.listen(3000);
+// console.log(path);
 module.exports = app;
