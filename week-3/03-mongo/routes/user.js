@@ -3,6 +3,7 @@ const router = Router();
 const userMiddleware = require("../middleware/user");
 
 // User Routes
+<<<<<<< HEAD
 app.post("/signup", (req, res) => {
   // Implement user signup logic
   User.create({ username: req.Body.username, password: req.Body.password });
@@ -28,4 +29,22 @@ app.post("/courses/:courseId", userMiddleware, (req, res) => {
 
 app.get("/purchasedCourses", userMiddleware, (req, res) => {
   // Implement fetching purchased courses logic
+=======
+router.post('/signup', (req, res) => {
+    // Implement user signup logic
 });
+
+router.get('/courses', (req, res) => {
+    // Implement listing all courses logic
+});
+
+router.post('/courses/:courseId', userMiddleware, (req, res) => {
+    // Implement course purchase logic
+});
+
+router.get('/purchasedCourses', userMiddleware, (req, res) => {
+    // Implement fetching purchased courses logic
+>>>>>>> df0238708f43edf4893786aa32898587eb61140c
+});
+
+module.exports = router
