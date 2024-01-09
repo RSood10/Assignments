@@ -1,0 +1,77 @@
+body {
+  background-color: honeydew;
+  font-family: cursive;
+  user-select: none;
+}
+.allbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-box {
+  width: 90%;
+  margin-top: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.card {
+  background-color: #eaeaea;
+  width: 18rem;
+  border-radius: 0.5rem;
+  padding: 2rem 1rem;
+  margin: 2rem 2rem;
+  border: 0.2px solid #e9e0e0;
+}
+.uservalue {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+  margin: 1rem 2rem;
+}
+.uservalue input {
+  padding: 1rem;
+  margin: 0.5rem 2rem;
+  border: 0.2px dotted #c3afaf;
+  background-color: #f9f9f9;
+  border-radius: 2rem;
+  color: blue;
+}
+button {
+  font-size: 17px;
+  padding: 0.5em 2em;
+  margin: 0rem 0.5rem;
+  border: transparent;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  background: dodgerblue;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(30, 144, 255, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+button:active {
+  transform: translate(0em, 0.2em);
+}
+hr {
+  background-color: #afadca;
+  width: -webkit-fill-available;
+  height: 0.1em;
+}
+.eleven h1 {
+  background: transparent;
+  font-family: cursive;
+  font-weight: bold;
+  color: grey;
+}
